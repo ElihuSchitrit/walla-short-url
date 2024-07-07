@@ -22,7 +22,7 @@ const App = () => {
         });
   
         if (!response.ok) {
-          const errorData = await response.json(); // Get the error details from the server response
+          const errorData = await response.json();
           throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
         }
   
@@ -63,11 +63,10 @@ const App = () => {
       }
   
       const data = await response.json();
-      setOriginalUrl(data.originalUrl); // Correctly access the 'originalUrl' from the data object
+      setOriginalUrl(data.originalUrl);
     } catch (error: any) {
       toast.error(error.message)
       console.error("Failed to expand URL:", error);
-      // Add any client-side error handling, e.g., displaying an error message to the user
     }
   };
   

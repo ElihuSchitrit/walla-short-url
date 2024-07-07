@@ -36,7 +36,7 @@ export class UrlController {
             const urlPrefix = 'http://localhost:3001/url/';
             const shortUrlKey = dto.url.replace(urlPrefix, '');
             const result = this.urlService.expand(shortUrlKey);
-            res.json({ originalUrl: result.originalUrl });  // Ensure this matches what the client expects
+            res.json({ originalUrl: result.originalUrl });
         } catch (error) {
             res.status(HttpStatus.BAD_REQUEST).json({ error: 'URL not found' });
         }

@@ -22,11 +22,8 @@ export class UrlService {
             };
         } catch (error: unknown) {
             if (error instanceof Error) {
-                console.error(`DNS lookup failed for ${hostname}: ${error.message}`);
-                // You might consider logging the entire error for more detailed diagnostics
-                throw new NotFoundException('Invalid URL or domain not found');  // This is correctly thrown here
+                throw new NotFoundException('Invalid URL or domain not found');
             } else {
-                // This else block is good practice for catching extremely unusual errors.
                 throw new Error('An unexpected error occurred');
             }
         }
@@ -35,7 +32,6 @@ export class UrlService {
     expand(shortUrlKey: string): { originalUrl: string; ip: string } {
         const urlData = this.urlMap.get(shortUrlKey);
         if (!urlData) {
-            console.error(`Key not found: ${shortUrlKey}`);
             throw new NotFoundException('URL not found');
         }
         return { originalUrl: urlData.originalUrl, ip: urlData.ip };

@@ -1,4 +1,4 @@
-// store.ts
+
 import {create} from 'zustand'
 
 type UrlEntry = {
